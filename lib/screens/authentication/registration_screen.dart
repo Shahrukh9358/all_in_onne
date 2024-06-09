@@ -4,14 +4,13 @@ import 'auth_controller.dart';
 class RegistrationScreen extends StatelessWidget {
   final AuthController _authController = Get.find<AuthController>();
   final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Row(children: [
-            Text("Test"),
-          ],),
+          title: Text("Registration"),
         ),
         body: Padding(
           padding: const EdgeInsets.all(12),
@@ -56,14 +55,7 @@ class RegistrationScreen extends StatelessWidget {
                           if (value.length < 8) {
                             return 'Password too short!';
                           }
-                          bool hasAlphaNumeric = RegExp(r'^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]').hasMatch(value);
-                          bool hasSpecialCharacter = RegExp(r'^(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$').hasMatch(value);
-                          if (!hasAlphaNumeric) {
-                            return 'Password must be alphanumeric';
-                          }
-                          if (!hasSpecialCharacter) {
-                            return 'Password must contain special character';
-                          }
+                          // Add more password validation here if needed
                           return null;
                         },
                         onChanged: (val) => _authController.password.value = val,
@@ -77,16 +69,17 @@ class RegistrationScreen extends StatelessWidget {
                     ],
                   ),
                 ),
+                SizedBox(height: 20,),
                 SizedBox(
-                  height: 80,
+                  height: 50,
                   width: 250,
-                  child: TextButton(
-                    child: const Text("Create Account"),
+                  child: ElevatedButton(
                     onPressed: () {
                       if (_formKey.currentState?.validate() ?? false) {
                         _authController.registerUser(); // If form is valid, register the user
                       }
                     },
+                    child: const Text("Create Account"),
                   ),
                 ),
               ],

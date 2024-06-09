@@ -5,6 +5,5 @@ class Users extends Table {
   IntColumn get id => integer()(); // Online ID from the online database
   TextColumn get fullName => text()();
   TextColumn get email => text().unique()();
-  TextColumn get createWatchlist => text().nullable()(); // New column for watchlist
 }
 

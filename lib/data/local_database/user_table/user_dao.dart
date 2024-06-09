@@ -1,8 +1,9 @@
 import 'dart:developer';
 import 'package:drift/drift.dart';
-import 'package:realproject/data/local_database/user_table.dart';
-import 'app_database.dart';
+import 'package:realproject/data/local_database/user_table/user_table.dart';
+import '../db/app_database.dart';
 part 'user_dao.g.dart';
+
 @DriftAccessor(tables: [Users])
 class UserDao extends DatabaseAccessor<AppDatabase> with _$UserDaoMixin {
   final AppDatabase db;
@@ -62,38 +63,6 @@ class UserDao extends DatabaseAccessor<AppDatabase> with _$UserDaoMixin {
     } catch (e) {
       log('Error deleting user: $e');
       return -1;
-    }
-  }
-
-  Future<int> insertWatchlist(int userId, String watchlist) async {
-    try {
-      final user = await getUserById(userId);
-      if (user != null) {
-        String updatedWatchlist = user.createWatchlist == null
-            ? watchlist
-            : '${user.createWatchlist},$watchlist';
-        final updateCount = await (update(users)..where((u) => u.id.equals(userId)))
-            .write(UsersCompanion(createWatchlist: Value(updatedWatchlist)));
-        log('Watchlist added for user ID $userId');
-        return updateCount;
-      }
-      return -1;
-    } catch (e) {
-      log('Error adding watchlist: $e');
-      return -1;
-    }
-  }
-
-  Future<List<String>> getWatchlistsForUser(int userId) async {
-    try {
-      final user = await getUserById(userId);
-      if (user != null && user.createWatchlist != null) {
-        return user.createWatchlist!.split(',');
-      }
-      return [];
-    } catch (e) {
-      log('Error getting watchlists for user: $e');
-      return [];
     }
   }
 }

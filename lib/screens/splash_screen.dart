@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'authentication/registration_screen.dart';
 import 'dashboard/dashboard_screen.dart';
+
 class SplashScreen extends StatelessWidget {
    SplashScreen({super.key});
   @override
