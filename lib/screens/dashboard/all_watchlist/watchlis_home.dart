@@ -1,70 +1,42 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:realproject/screens/dashboard/all_watchlist/watchlist_controller.dart';
-import 'dart:developer';
+import 'package:realproject/screens/dashboard/all_watchlist/watchlist1/index.dart';
+import 'package:realproject/screens/dashboard/botton_navgationbar/bottombar3.dart';
+import 'package:realproject/screens/dashboard/botton_navgationbar/bottombar4.dart';
+import 'package:realproject/screens/dashboard/botton_navgationbar/home.dart';
 
-class WatchlistScreen extends StatelessWidget {
-  // final String watchlistName;
-  final WatchlistController _watchlistController = Get.put(WatchlistController());
-  // WatchlistScreen({required this.watchlistName});
+class WatchlistScreen extends StatefulWidget {
+  const WatchlistScreen({super.key});
+  @override
+  State<WatchlistScreen> createState() => _WatchlistScreenState();
+}
+class _WatchlistScreenState extends State<WatchlistScreen> {
+  List<Widget> screens = [
+   const Watchlist1(),
+   const BottomBar2(),
+   const BottomBar3(),
+   const BottomBar4(),
+ ];
+ int _selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("HOME PAGE"),),
-        // title: Row(
-        //   children: [
-        //     // Text(watchlistName),
-        //   ],
-        // ),
+    return  Scaffold(
+      backgroundColor: Colors.white,
+      body:   screens[_selectedIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex,
+        type: BottomNavigationBarType.fixed,
+        onTap: (index){setState(() {
+        _selectedIndex = index;
+        });
+        },
+        items: const [
+        BottomNavigationBarItem(icon: Icon(Icons.home),label: "Home"),
+          BottomNavigationBarItem(icon: Icon(Icons.school),label: "School"),
+          BottomNavigationBarItem(icon: Icon(Icons.document_scanner),label: "paper"),
+          BottomNavigationBarItem(icon: Icon(Icons.person),label: "settings"),
 
-      body: Column(
-        children: [
-         // const Row(
-         //   children: [
-         //     TabBar(
-         //       tabs: [
-         //         Tab(icon: Icon(Icons.directions_car)),
-         //         Tab(icon: Icon(Icons.directions_transit)),
-         //         Tab(icon: Icon(Icons.directions_bike)),
-         //       ],
-         //     ),
-         //     TabBarView(
-         //       children: [
-         //         Icon(Icons.directions_car),
-         //         Icon(Icons.directions_transit),
-         //         Icon(Icons.directions_bike),
-         //       ],
-         //     ),
-         //   ],
-         // ),
-          Expanded(
-            child: Center(
-              child: Obx(
-                    () => _watchlistController.watchlists.isEmpty
-                    ? const Text('No watchlists found') : ListView.builder(
-                  itemCount: _watchlistController.watchlists.length,
-                  itemBuilder: (context, index) {
-                    final watchlist = _watchlistController.watchlists[index];
-                    log("data aa rha hai online");
-                    return ListTile(
-                      title: Container(
-                        height: 50,
-                        width: 70,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.yellow
-                        ),
-                        child: Text(watchlist.watchlistName!),
-                      ),
-                    );
-                  },
-                ),
-              ),
-            ),
-          ),
-            ],
-         ),
+
+      ],),
     );
   }
 }
