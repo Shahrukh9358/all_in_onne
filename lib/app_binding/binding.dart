@@ -4,7 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:dio/dio.dart';
 import '../dashboard_controller.dart';
 import '../data/local_database/watchlist_table/watchlist_dao.dart';
-import '../screens/dashboard/all_watchlist/watchlist_controller.dart';
+import '../screens/dashboard/all_watchlist/watchlist1/watchlist_controller.dart';
 import '../data/api/auth_repository.dart';
 import '../data/api/users_update.dart';
 import '../data/local_database/db/app_database.dart';

@@ -11,7 +11,7 @@ class WatchlistScreen extends StatefulWidget {
 }
 class _WatchlistScreenState extends State<WatchlistScreen> {
   List<Widget> screens = [
-   const Watchlist1(),
+   const WatchlistHome(),
    const BottomBar2(),
    const BottomBar3(),
    const BottomBar4(),

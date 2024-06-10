@@ -9,10 +9,6 @@ class Watchlist4 extends StatefulWidget {
 class _Watchlist4State extends State<Watchlist4> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Center(child: Text("Waatchlist 4",style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold),),)
-      ],
-    );
+    return const Center(child:  Center(child: Text("Watchlist 5",style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold),),),);
   }
 }

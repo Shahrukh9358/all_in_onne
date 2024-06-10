@@ -5,6 +5,7 @@ import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:realproject/data/api/WatchlistUser.dart';
 import 'package:realproject/data/local_database/db/app_database.dart';
 import 'package:realproject/data/local_database/watchlist_table/watchlist_dao.dart';
+
 class WatchlistController extends GetxController {
   final WatchlistDao _watchlistDao = Get.find<AppDatabase>().watchlistDao;
   final UserWatchlist _userWatchlist =  Get.find<UserWatchlist>();

@@ -5,7 +5,7 @@ import 'package:get/get.dart' hide Response, Value;
 import 'package:shared_preferences/shared_preferences.dart';
 import '../local_database/db/app_database.dart';
 import '../local_database/watchlist_table/watchlist_dao.dart';
-import 'package:realproject/screens/dashboard/all_watchlist/watchlist_controller.dart';
+import 'package:realproject/screens/dashboard/all_watchlist/watchlist1/watchlist_controller.dart';
 
 class UserWatchlist {
   final Dio _dio = Get.find<Dio>();
