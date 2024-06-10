@@ -22,14 +22,15 @@ class UserWatchlist {
       Response response = await _dio.post('/users/watchList/create',
         data: {
           "name": watchlistName,
-          "id": userId,
+          "userId": userId,
         },
         options: Options(headers: {"Authorization": "Bearer $token"}),
       );
       log("Watchlist creation response: ${response.data}");
       final watchlist = WatchlistTableCompanion(
           watchlistName: Value(watchlistName),
-          watchlistId: Value(userId)
+          watchlistId: Value(response.data["id"]), // watchlist ki id jo backend se aai hai
+          userId: Value(userId),
       );
 
       log("Inserting watchlist into local database");
@@ -38,8 +39,6 @@ class UserWatchlist {
 
       // Refresh the watchlists
       // _watchlistController.watchlists.refresh();
-
-      return response.data;
     } catch (e, s) {
       log("Error creating watchlist: $e, StackTrace: $s");
       Get.snackbar('Error', 'Failed to create watchlist');

@@ -37,16 +37,7 @@ class WatchlistDao extends DatabaseAccessor<AppDatabase> with _$WatchlistDaoMixi
 
   Future<int> insertWatchlist(WatchlistTableCompanion watchlist) async {
     try {
-      // Logging the values to ensure all required fields are present
-      log('Inserting watchlist: ${watchlist.watchlistName.value}, ${watchlist.userId.value}');
-
-      // Check if required values are present
-      if (watchlist.watchlistName.present && watchlist.watchlistId.present && watchlist.userId.present) {
         return into(watchlistTable).insert(watchlist);
-      } else {
-        log('Error: Missing required values in watchlist');
-        return -1;
-      }
     } catch (e) {
       log('Error inserting watchlist: $e');
       return -1;

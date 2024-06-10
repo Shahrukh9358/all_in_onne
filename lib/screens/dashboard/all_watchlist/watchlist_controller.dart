@@ -22,9 +22,11 @@ class WatchlistController extends GetxController {
     _watchlistDao.watchAllWatchlists().listen((watchlistItems) {
       log('Stream fetched watchlists: $watchlistItems');
       watchlists.value = watchlistItems;
+      print("list me data aa rha hai${watchlists.toString()}");
       log("controller tak value aa rhi hai");
     }).onError((e) {
       log('Error fetching watchlists: $e');
+
     });
   }
 
