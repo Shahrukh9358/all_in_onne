@@ -124,8 +124,6 @@ class DashboardScreen extends StatelessWidget {
                         log("Creating watchlist with name: $watchlistName for user ID: $userId");
                         await _watchlistController.createWatchlist(watchlistName, userId);
                         Get.toNamed('/watchlist', arguments: watchlistName);
-                        print("this is watchlist$watchlistName");
-                        log("Watchlist creation succeeded");
                       } catch (e, s) {
                         log("Error creating watchlist: ${e.toString()}, ${s.toString()}");
                         Get.snackbar('Error', 'Failed to create watchlist.');

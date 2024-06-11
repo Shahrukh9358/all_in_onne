@@ -2,8 +2,8 @@ import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:get/get.dart' hide Response;
 import 'package:shared_preferences/shared_preferences.dart';
-import '../local_database/db/app_database.dart';
-import '../local_database/user_table/user_dao.dart';
+import '../../local_database/db/app_database.dart';
+import '../../local_database/user_table/user_dao.dart';
 class UpdateUser {
  Future updateUser(Map<String, String> body, int userId) async {
   final Dio dio = Get.find<Dio>();

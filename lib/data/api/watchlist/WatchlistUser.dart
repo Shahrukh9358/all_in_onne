@@ -3,10 +3,8 @@ import 'package:dio/dio.dart';
 import 'package:drift/drift.dart';
 import 'package:get/get.dart' hide Response, Value;
 import 'package:shared_preferences/shared_preferences.dart';
-import '../local_database/db/app_database.dart';
-import '../local_database/watchlist_table/watchlist_dao.dart';
-import 'package:realproject/screens/dashboard/all_watchlist/watchlist1/watchlist_controller.dart';
-
+import '../../local_database/db/app_database.dart';
+import '../../local_database/watchlist_table/watchlist_dao.dart';
 class UserWatchlist {
   final Dio _dio = Get.find<Dio>();
   final WatchlistDao watchlistDao = Get.find<AppDatabase>().watchlistDao;

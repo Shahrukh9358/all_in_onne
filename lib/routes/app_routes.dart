@@ -4,9 +4,9 @@ import 'package:realproject/screens/dashboard/all_watchlist/watchlist1/watchlist
 import 'package:realproject/screens/dashboard/all_watchlist/watchlist1/watchlist3/index.dart';
 import 'package:realproject/screens/dashboard/botton_navgationbar/bottombar3.dart';
 import 'package:realproject/screens/dashboard/botton_navgationbar/bottombar4.dart';
-import 'package:realproject/screens/dashboard/botton_navgationbar/home.dart';
+import 'package:realproject/screens/dashboard/botton_navgationbar/buttombar2.dart';
 import '../screens/authentication/registration_screen.dart';
-import '../screens/dashboard/all_watchlist/watchlis_home.dart';
+import '../screens/dashboard/botton_navgationbar/watchlis_home.dart';
 import '../screens/dashboard/all_watchlist/watchlist1/watchlis1/index.dart';
 import '../screens/dashboard/all_watchlist/watchlist1/watchlist4/index.dart';
 import '../screens/dashboard/all_watchlist/watchlist1/watchlist5/index.dart';

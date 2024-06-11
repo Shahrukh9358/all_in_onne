@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../data/api/auth_repository.dart';
+import '../../data/api/authentication/auth_repository.dart';
 import '../dashboard/dashboard_screen.dart';
 
 class AuthController extends GetxController {

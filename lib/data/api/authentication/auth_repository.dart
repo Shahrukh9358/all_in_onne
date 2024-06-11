@@ -3,8 +3,8 @@ import 'package:dio/dio.dart';
 import 'package:drift/drift.dart';
 import 'package:get/get.dart' hide Response, Value;
 import 'package:shared_preferences/shared_preferences.dart';
-import '../local_database/db/app_database.dart';
-import '../local_database/user_table/user_dao.dart';
+import '../../local_database/db/app_database.dart';
+import '../../local_database/user_table/user_dao.dart';
 class AuthRepository {
   final Dio _dio = Get.find<Dio>();
   final UserDao userDao = Get.find<AppDatabase>().userDao;
@@ -20,7 +20,6 @@ class AuthRepository {
       rethrow;
     }
   }
-
   Future<void> getUserDetails() async {
     try {
       String? token = Get.find<SharedPreferences>().getString("ACCESS_TOKEN");

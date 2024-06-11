@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:realproject/screens/dashboard/all_watchlist/watchlist1/index.dart';
 import 'package:realproject/screens/dashboard/botton_navgationbar/bottombar3.dart';
 import 'package:realproject/screens/dashboard/botton_navgationbar/bottombar4.dart';
-import 'package:realproject/screens/dashboard/botton_navgationbar/home.dart';
+import 'package:realproject/screens/dashboard/botton_navgationbar/buttombar2.dart';
 
 class WatchlistScreen extends StatefulWidget {
   const WatchlistScreen({super.key});
