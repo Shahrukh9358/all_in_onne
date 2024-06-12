@@ -1,20 +1,21 @@
 import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:get/get.dart'hide Response;
+import 'package:get/get.dart' hide Response;
 
 class StocksApi {
-  Future  getStocks() async {
+  Future getStocks() async {
     final Dio _dio = Get.find<Dio>();
     try {
       String? token = Get.find<SharedPreferences>().getString("ACCESS_TOKEN");
       if (token != null) {
-        Response response = await _dio.get('/stocks/all_stock',
+        Response response = await _dio.get(
+          '/stocks/all_stock',
           options: Options(headers: {"Authorization": "Bearer $token"}),
         );
         log("Stocks fetched successfully.");
         log(response.data.toString());
-         return response.data["data"];
+        return response.data["data"];
       } else {
         log("Token not found.");
         Get.snackbar('Error', 'Access token is missing.');

@@ -2,7 +2,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../dashboard_controller.dart';
-import 'all_watchlist/watchlist1/watchlist_controller.dart';
+import 'all_watchlist/watchlist_controller.dart';
 class DashboardScreen extends StatelessWidget {
   final DashboardController _controller = Get.find<DashboardController>();
   final WatchlistController _watchlistController = Get.find<WatchlistController>();

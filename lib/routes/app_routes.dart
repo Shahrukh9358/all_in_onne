@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:realproject/screens/dashboard/all_watchlist/watchlist1/index.dart';
+import 'package:realproject/screens/dashboard/all_watchlist/index.dart';
 import 'package:realproject/screens/dashboard/all_watchlist/watchlist1/watchlist2/index.dart';
 import 'package:realproject/screens/dashboard/all_watchlist/watchlist1/watchlist3/index.dart';
 import 'package:realproject/screens/dashboard/botton_navgationbar/bottombar3.dart';

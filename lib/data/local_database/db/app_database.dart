@@ -7,6 +7,8 @@ import 'package:realproject/data/local_database/watchlist_table/watchlist_table.
 import 'package:realproject/data/local_database/watchlist_table/watchlist_dao.dart';
 import 'package:realproject/data/local_database/user_table/user_table.dart';
 import 'package:realproject/data/local_database/user_table/user_dao.dart';
+import '../stocks_table/stocks_dao.dart';
+import '../stocks_table/stocks_table.dart';
 part 'app_database.g.dart';
 
 LazyDatabase _openConnection() {
@@ -17,9 +19,12 @@ LazyDatabase _openConnection() {
   });
 }
 
-@DriftDatabase(tables: [Users, WatchlistTable], daos: [UserDao, WatchlistDao])
+@DriftDatabase(tables: [Users, WatchlistTable, StocksTable], daos: [UserDao, WatchlistDao, StocksDao])
 class AppDatabase extends _$AppDatabase {
   AppDatabase() : super(_openConnection());
+
   @override
   int get schemaVersion => 1;
 }
+
+
