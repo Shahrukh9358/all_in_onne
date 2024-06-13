@@ -1,14 +1,6 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:realproject/screens/dashboard/all_watchlist/watchlist1/watchlis1/index.dart';
-import 'package:realproject/screens/dashboard/all_watchlist/watchlist1/watchlist2/index.dart';
-import 'package:realproject/screens/dashboard/all_watchlist/watchlist1/watchlist3/index.dart';
-import 'package:realproject/screens/dashboard/all_watchlist/watchlist1/watchlist4/index.dart';
-import 'package:realproject/screens/dashboard/all_watchlist/watchlist1/watchlist5/index.dart';
 import 'package:realproject/screens/dashboard/all_watchlist/watchlist_controller.dart';
-import '../../../data/modals/Stocks.dart';
 
 class WatchlistHome extends StatefulWidget {
   const WatchlistHome({Key? key}) : super(key: key);
@@ -19,14 +11,6 @@ class WatchlistHome extends StatefulWidget {
 
 class _WatchlistHomeState extends State<WatchlistHome> {
   final WatchlistController _watchlistController = Get.find<WatchlistController>();
-  final List<Widget> watchlistWidgets = const [
-    Watchlist1(),
-    Watchlist2(),
-    Watchlist3(),
-    Watchlist4(),
-    Watchlist5()
-  ];
-
   final TextEditingController _searchController = TextEditingController();
 
   @override
@@ -59,9 +43,10 @@ class _WatchlistHomeState extends State<WatchlistHome> {
             "Watchlist",
             style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
           ),
-          bottom: TabBar(
+          bottom:TabBar(
             isScrollable: true,
             tabAlignment: TabAlignment.start,
+              dividerColor: Colors.transparent,
             tabs: [
               const Tab(text: 'Watchlist Home'),
               ..._watchlistController.watchlists.map((watchlist) {
@@ -80,9 +65,8 @@ class _WatchlistHomeState extends State<WatchlistHome> {
                 }
                 return TabBarView(
                   children: [
-                    ..._watchlistController.watchlists.asMap().entries.map((entry) {
-                      final index = entry.key;
-                      return watchlistWidgets[index];
+                    ..._watchlistController.watchlists.map((watchlist) {
+                      return _buildStocksListView(_watchlistController);
                     }).toList(),
                     _buildStocksListView(_watchlistController),
                   ],
@@ -91,12 +75,12 @@ class _WatchlistHomeState extends State<WatchlistHome> {
             ),
           ],
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            // Add your add stock functionality here
-          },
-          child: const Icon(Icons.add),
-        ),
+        // floatingActionButton: FloatingActionButton(
+        //   onPressed: () {
+        //     // Add your add stock functionality here
+        //   },
+        //   child: const Icon(Icons.add),
+        // ),
       ),
     );
   }
@@ -105,7 +89,8 @@ class _WatchlistHomeState extends State<WatchlistHome> {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        margin: EdgeInsets.all(8.5),
+        padding: const EdgeInsets.symmetric(horizontal: 12.0),
         decoration: BoxDecoration(
           color: Colors.grey[200],
           borderRadius: BorderRadius.circular(8),
@@ -115,19 +100,19 @@ class _WatchlistHomeState extends State<WatchlistHome> {
             const Icon(Icons.search, color: Colors.grey),
             const SizedBox(width: 8),
             Expanded(
-              child: TextField(
+              child: TextFormField(
                 controller: _searchController,
                 decoration: const InputDecoration(
                   hintText: 'Search and add',
                   border: InputBorder.none,
                 ),
-                onSubmitted: (value) {
+                onChanged: (value) {
                   _filterStocks();
                 },
               ),
             ),
             const SizedBox(width: 8),
-            const Text( '00/100', style: TextStyle(color: Colors.grey)),
+            const Text('00/100', style: TextStyle(color: Colors.grey)),
           ],
         ),
       ),
@@ -173,7 +158,7 @@ class _WatchlistHomeState extends State<WatchlistHome> {
                   ],
                 ),
                 onTap: () async {
-                  await _watchlistController.addStockToLocalDatabase(stock);
+                  await watchlistController.addStockToLocalDatabase(stock);
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(content: Text('${stock.companyName} added to watchlist')),
                   );

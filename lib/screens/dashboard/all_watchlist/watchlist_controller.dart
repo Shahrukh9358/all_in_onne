@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:drift/drift.dart';
 import 'package:get/get.dart'hide Value;
 import 'package:realproject/data/api/stocks/stocks_items.dart';
@@ -9,6 +7,7 @@ import 'package:realproject/data/local_database/watchlist_table/watchlist_dao.da
 import '../../../data/api/watchlist/WatchlistUser.dart';
 import '../../../data/local_database/stocks_table/stocks_dao.dart';
 import '../../../data/modals/Stocks.dart';
+
 class WatchlistController extends GetxController {
   final WatchlistDao _watchlistDao = Get.find<AppDatabase>().watchlistDao;
   final  StocksDao _stocksDao   = Get.find<AppDatabase>().stocksDao;
@@ -29,6 +28,7 @@ class WatchlistController extends GetxController {
   void _fetchWatchlists() {
     _watchlistDao.watchAllWatchlists().listen((watchlistItems) {
       watchlists.assignAll(watchlistItems);
+
     }).onError((e) {
       print('Error fetching watchlists: $e');
     });
