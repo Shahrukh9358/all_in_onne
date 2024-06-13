@@ -20,9 +20,9 @@ class _WatchlistScreenState extends State<WatchlistScreen> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      backgroundColor: Colors.white,
       body:   screens[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
+        elevation: 0,
         currentIndex: _selectedIndex,
         type: BottomNavigationBarType.fixed,
         onTap: (index){setState(() {
@@ -31,9 +31,9 @@ class _WatchlistScreenState extends State<WatchlistScreen> {
         },
         items: const [
         BottomNavigationBarItem(icon: Icon(Icons.home),label: "Home"),
-          BottomNavigationBarItem(icon: Icon(Icons.school),label: "School"),
-          BottomNavigationBarItem(icon: Icon(Icons.document_scanner),label: "paper"),
-          BottomNavigationBarItem(icon: Icon(Icons.person),label: "settings"),
+          BottomNavigationBarItem(icon: Icon(Icons.bookmark_border),label: "Order"),
+          BottomNavigationBarItem(icon: Icon(Icons.shopping_bag),label: "Portfolio"),
+          BottomNavigationBarItem(icon: Icon(Icons.person),label: "Profile"),
 
 
       ],),

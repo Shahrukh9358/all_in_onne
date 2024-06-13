@@ -20,7 +20,7 @@ class AppBindings extends Bindings {
 
     // Initialize Dio
     Dio dio = Dio(BaseOptions(
-      baseUrl: "https://ccc9-103-95-164-62.ngrok-free.app", // Replace with your base URL
+      baseUrl: "https://e726-103-95-164-62.ngrok-free.app", // Replace with your base URL
     ));
     dio.interceptors.add(LogInterceptor());
     Get.put<Dio>(dio, permanent: true);

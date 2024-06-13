@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:realproject/screens/dashboard/all_watchlist/watchlist_controller.dart';
 
 class WatchlistHome extends StatefulWidget {
-  const WatchlistHome({Key? key}) : super(key: key);
+  const WatchlistHome({super.key});
 
   @override
   State<WatchlistHome> createState() => _WatchlistHomeState();
@@ -112,7 +112,8 @@ class _WatchlistHomeState extends State<WatchlistHome> {
               ),
             ),
             const SizedBox(width: 8),
-            const Text('00/100', style: TextStyle(color: Colors.grey)),
+            Obx(() => Text("${_watchlistController.stocksCount.value}/100",
+              style:TextStyle(color: Colors.grey) ,))
           ],
         ),
       ),

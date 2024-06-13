@@ -20,10 +20,11 @@ class DashboardScreen extends StatelessWidget {
                 width: 100,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(50),
-                    color: Colors.yellow
+                    color: Colors.blue
                 ),
-                child:  Icon(Icons.person,size: 100,),
+                child:  Image.asset("assets/images/logo.png",height: 300,width: 200,),
               ),
+              SizedBox(height: 15,),
               Obx(() {
               if (_controller.users.isNotEmpty) {
                     final user = _controller.users.value.first;
@@ -133,7 +134,7 @@ class DashboardScreen extends StatelessWidget {
                 },
                 child: const Text('Create watchlist'),
               )
-            )
+            ),
           ],
         ),
       ),
